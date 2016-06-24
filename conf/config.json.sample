@@ -1,0 +1,19 @@
+{
+    "host" : "localhost",
+    "port" : 1234,
+    "logfile": "filter-dns.log",
+    "forwarders" : [
+        {
+            "address": "8.8.8.8",
+            "Port": 53,
+            "protocol": "udp"
+        }
+    ],
+    "filters" : [
+        {
+            "host": "netflix.com",
+            "query": "AAAA",
+            "matching": "contains"
+        }
+    ]
+}
