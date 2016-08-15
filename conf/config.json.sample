@@ -12,7 +12,7 @@
     "filters" : [
         {
             "host": "netflix.com",
-            "query": "AAAA",
+            "type": "AAAA",
             "matching": "contains"
         }
     ]

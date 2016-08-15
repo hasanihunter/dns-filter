@@ -99,14 +99,14 @@ func parseConfigFile(configPath string) (*DNSConfig, error) {
 
 	config.Host = host
 
-	port, portExists := configMap["port"].(int64)
+	port, portExists := configMap["port"].(float64)
 
 	if !portExists {
 		// bind to port 1234 by default
 		port = 1234
 	}
 
-	config.Port = port
+	config.Port = int64(port)
 
 	forwardingSlice, forwardingMapExists := configMap["forwarders"].([]interface{})
 
