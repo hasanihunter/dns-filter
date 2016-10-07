@@ -89,19 +89,15 @@ go get
 ```
 and then 
 ``` sh
-go build -o dns-filter
+make build
 ```
-to build the actual binary. To build for other platforms, simple scripts are provided in the **scripts** directory:
+to build the actual binary. To build for other platforms, run the `build-x` target:
 
-``` sh
-sh scripts/build.macos.sh
+```console
+make build-x
 ```
 
-* build.openbsd.sh
-* build.freebsd.sh
-* build.macos.sh
-* build.linux.sh
-* build.windows.sh
+The resulting binaries will be in the `bin/` subdirectory.
 
 ## Big Thanks
 I would like to thank [Mateusz Kaczanowski](http://mkaczanowski.com) for publishing an [example](http://mkaczanowski.com/golang-build-dynamic-dns-service-go/ "#Build your own dynamic DNS service with GO!") that I used to get familiar with the [Golang DNS library](https://github.com/miekg/dns)
