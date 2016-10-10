@@ -67,7 +67,7 @@ func setupLogging(logFilePath string) {
 
 		logger = log.New(fo, "", log.LstdFlags)
 	} else {
-		panic("Missing logfile")
+		logger = log.New(os.Stdout, "", log.LstdFlags)
 	}
 }
 
