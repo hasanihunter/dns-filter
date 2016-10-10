@@ -29,13 +29,14 @@ import (
 	"errors"
 	"flag"
 	"fmt"
-	"github.com/miekg/dns"
 	"log"
 	"os"
 	"os/signal"
 	"strconv"
 	"strings"
 	"syscall"
+
+	"github.com/miekg/dns"
 )
 
 var (
@@ -181,9 +182,11 @@ func handleDNSRequest(rw dns.ResponseWriter, req *dns.Msg) {
 
 func serveDNSRequests() {
 
-	server := &dns.Server{
-		Addr: fmt.Sprintf("%s:%d", config.Host, config.Port),
-		Net:  "udp",
+	server := &dns.Server{}
+	if config.Port > 0 {
+		server.Addr = fmt.Sprintf("%s:%d", config.Host, config.Port)
+	} else if config.Host != "" {
+		server.Addr = fmt.Sprintf("%s:domain", config.Host)
 	}
 
 	listenErr := server.ListenAndServe()
